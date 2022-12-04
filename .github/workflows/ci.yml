@@ -16,31 +16,5 @@ jobs:
     - name: Build and Push Docker Image
       run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "ernestlauwers" --password-stdin
-          docker image build -t ernestlauwers/pe-besturingsystemen2:latest .
-          docker push ernestlauwers/pe-besturingsystemen2:latest
-    - name: Checkout to the repository
-      uses: actions/checkout@v2
-    - name: Set up NodeJS environment
-      uses: actions/setup-node@v2
-      with:
-        node-version-file: '.nvmrc'
-    - name: Cache node modules
-      id: cache-npm
-      uses: actions/cache@v3
-      env:
-        cache-name: cache-node-modules
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
-    - name: Install package dependencies
-      run: npm install
-    - name: Check linting and formatting
-      run: npm run lint
-    - name: Execute test cases
-      run: npm run test
-    - name: Create test build
-      run: npm run build
+          docker image build -t ernestlauwers/pe-besturingsystemen2:latestFrontend .
+          docker push ernestlauwers/pe-besturingsystemen2:latestFrontend

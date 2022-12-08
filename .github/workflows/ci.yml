@@ -1,4 +1,4 @@
-name: Docker (Build&Push)
+name: Actions
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Update Portainer with Newest Image  
       - uses: muinmomin/webhook-action@v1.0.0
         with:
           url: ${{ secrets.WEBHOOK_URL }}
-      - name: Update Portainer with Newest Image  

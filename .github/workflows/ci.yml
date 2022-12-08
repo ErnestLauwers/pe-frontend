@@ -16,5 +16,5 @@ jobs:
     - name: Build and Push Docker Image
       run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "ernestlauwers" --password-stdin
-          docker image build -t ernestlauwers/pe-besturingsystemen2:latestFrontend .
-          docker push ernestlauwers/pe-besturingsystemen2:latestFrontend
+          docker image build -t ernestlauwers/pe-frontend:latestFrontend .
+          docker push ernestlauwers/pe-frontend:latestFrontend

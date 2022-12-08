@@ -19,11 +19,12 @@ jobs:
           docker image build -t ernestlauwers/pe-frontend:latestFrontend .
           docker push ernestlauwers/pe-frontend:latestFrontend
     - name: Create Release  
-      uses: CupOfTea696/gh-action-auto-release@v1.0.0
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        title: "Release: $version"
-        tag: "v$semver"
-        draft: false
-        regex: "/^Release: #{semver}$/i"
-      env:
-        GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
+        repo_token: "${{ secrets.CI_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          LICENSE.txt
+          *.jar

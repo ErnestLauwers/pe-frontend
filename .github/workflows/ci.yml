@@ -18,7 +18,11 @@ jobs:
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "ernestlauwers" --password-stdin
           docker image build -t ernestlauwers/pe-frontend:latestFrontend .
           docker push ernestlauwers/pe-frontend:latestFrontend
-    - name: Update Portainer with Newest Image  
-      uses: muinmomin/webhook-action@v1.0.0
+    - name: Create Release  
+      uses: CupOfTea696/gh-action-auto-release@v1.0.0
       with:
-        url: ${{ secrets.WEBHOOK_URL }}
+        title: "Release: $version"
+        tag: "v$semver"
+        draft: false
+        regex: "/^Release: #{semver}$/i"
+     

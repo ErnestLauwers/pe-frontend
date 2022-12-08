@@ -18,3 +18,13 @@ jobs:
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "ernestlauwers" --password-stdin
           docker image build -t ernestlauwers/pe-frontend:latestFrontend .
           docker push ernestlauwers/pe-frontend:latestFrontend
+  
+  update_portainer: 
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: muinmomin/webhook-action@v1.0.0
+        with:
+          url: ${{ secrets.WEBHOOK_URL }}
+      - name: Update Portainer with Newest Image  
